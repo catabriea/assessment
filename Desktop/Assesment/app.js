@@ -1,0 +1,49 @@
+$(document).ready(function(){
+
+	$("somebutton").click(function() {
+		$("container").append('<div class ="changeColor"><div class="remove"></di></div>');
+	});
+
+	$("body").on('click', '.clickMeButton', function(){
+		createNewThing();
+	});
+
+	$(this).removeClass("unselected");
+		$(this).addClass("selected");
+
+	function createNewDiv(){
+	$("body").append("<div></div>");
+	var $el = $("body").children().last();
+	$el.append("<p>Here is the color button</p>");
+	$el.append("<button>Change Color</button>");
+}
+// test anxiety!!!! ahhhghghghgh
+
+// 	var i = 0;
+// 	var remove = true; // added this 
+
+// 	$('#button').click(function(e) {
+//     $('<div/>').attr({
+//         'id' : i
+//     }).addClass('circle').css({
+//         'top' : e.pageY - 20,
+//         'left' : e.pageX - 20
+//     }).appendTo('#area'); // append to new container
+//     i++;
+// });
+
+// $('#area').on('click','.circle',function (){ // corrected spelling and changed to on()
+//     if(remove){ 
+//         $(this).remove();
+//     } else {
+//         //just to see if it was clicked
+//         $(this).css({'background-color': 'red'});
+//     }
+// });
+
+// $('#btn').toggle(function() {
+//     $('#btn').val('add');
+//     remove = true;
+// }, function() {
+//     $('#btn').val('remove');
+//     remove = false;
