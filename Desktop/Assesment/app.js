@@ -1,22 +1,40 @@
-$(document).ready(function(){
+(document).ready(function(){
 
-	$("somebutton").click(function() {
-		$("container").append('<div class ="changeColor"><div class="remove"></di></div>');
+	var clicks =0; //create a variable for clicks and set it at start point of 0
+
+    $(".clickMe").on('click', function(){ //create a click me button function
+    	clicks++; //this will increment the click counter every time the Click Me buttn is clicked
+    
+    	//console.log("Button Clicked!");
+
+    	$("body").append("<div class='newDiv' data-color-toggle='1'></div"); //this will create the functionality we see on the DOM? 
+		var el = $("body").children().last(); //each time clicked it gets added to the end of the lise
+		el.append("<p>Here are the number of clicks: " + clicks + "</p>"); //self-explanitory for the elements that get appended
+		el.append("<button class='removeButton'>Remove</button");			
+		el.append("<button class='changeColor'>Change Color</button>");
+		});
+
+	$("body").on("click", ".changeColor", function(){ //this is the actual changeColor function that enables it to ...change color lol
+		var parentEl = $(this).parent();
+
+		if(parentEl.data('colorToggle') == 1){
+			parentEl.data("colorToggle", 2);
+			parentEl.css("background-color", "#FF0000");
+		} else {
+			parentEl.data("colorToggle", 1);
+			parentEl.css("background-color", "#00FF00");
+		}
 	});
 
-	$("body").on('click', '.clickMeButton', function(){
-		createNewThing();
+	$("body").on("click", ".removeButton", function(){ //remove button function that will take out that line click representation
+		var parentEl = $(this).parent();
+
+		parentEl.remove(); //I understand parent and child now
 	});
+});
+	
 
-	$(this).removeClass("unselected");
-		$(this).addClass("selected");
-
-	function createNewDiv(){
-	$("body").append("<div></div>");
-	var $el = $("body").children().last();
-	$el.append("<p>Here is the color button</p>");
-	$el.append("<button>Change Color</button>");
-}
+	//original assessment day notes - I was so very lost
 // test anxiety!!!! ahhhghghghgh
 
 // 	var i = 0;
